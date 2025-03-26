@@ -1,5 +1,6 @@
 # Photography Portfolio Website
 # موقع محفظة التصوير الفوتوغرافي
+<<<<<<< HEAD
 # फोटोग्राफी पोर्टफोलियो वेबसाइट
 
 ## Features / المميزات / विशेषताएं
@@ -13,6 +14,20 @@
 ## Setup Instructions / تعليمات الإعداد / सेटअप निर्देश
 
 ### Requirements / المتطلبات / आवश्यकताएं
+=======
+
+## Features / المميزات 
+- Responsive Design 
+- Photo Gallery / معرض الصور 
+- Category Filtering / تصفية الفئات 
+- Contact Form / نموذج الاتصال 
+- Admin Panel / لوحة التحكم 
+- REST API / واجهة برمجة التطبيقات / REST API
+
+## Setup Instructions / تعليمات الإعداد 
+
+### Requirements / المتطلبات 
+>>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
 - Python 3.8 or higher
 - Django 4.2
 - Django REST framework
@@ -20,19 +35,32 @@
 - django-cors-headers
 - python-dotenv
 
+<<<<<<< HEAD
 ### Installation / التثبيت / इंस्टॉलेशन
 1. Clone the repository / استنساخ المستودع / रिपॉजिटरी क्लोन करें:
+=======
+### Installation / التثبيت 
+1. Clone the repository / استنساخ المستودع 
+>>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
 ```bash
 git clone https://github.com/alameed143/photography-portfolio.git
 cd photography-portfolio
 ```
 
+<<<<<<< HEAD
 2. Create virtual environment / إنشاء بيئة افتراضية / वर्चुअल एनवायरनमेंट बनाएं:
+=======
+2. Create virtual environment / إنشاء بيئة افتراضية 
+>>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
 ```bash
 python -m venv venv
 ```
 
+<<<<<<< HEAD
 3. Activate virtual environment / تفعيل البيئة الافتراضية / वर्चुअल एनवायरनमेंट सक्रिय करें:
+=======
+3. Activate virtual environment / تفعيل البيئة الافتراضية 
+>>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
 ```bash
 # Windows
 venv\Scripts\activate
@@ -62,14 +90,22 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+<<<<<<< HEAD
 ### Access Points / نقاط الوصول / एक्सेस पॉइंट्स
+=======
+### Access Points / نقاط الوصول 
+>>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
 - Website: http://localhost:8000/
 - Admin Panel: http://localhost:8000/admin/
 - API Endpoints:
   - Photos: http://localhost:8000/api/photos/
   - Categories: http://localhost:8000/api/categories/
 
+<<<<<<< HEAD
 ## Project Structure / هيكل المشروع / प्रोजेक्ट संरचना
+=======
+## Project Structure / هيكل المشروع 
+>>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
 ```
 photography-portfolio/
 ├── frontend/
@@ -91,11 +127,19 @@ photography-portfolio/
 └── .env
 ```
 
+<<<<<<< HEAD
 ## Contributing / المساهمة / योगदान
+=======
+## Contributing / المساهمة 
+>>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
 Feel free to contribute to this project by:
 - Creating issues
 - Submitting pull requests
 - Improving documentation
 
 ## License / الترخيص / लाइसेंस
+<<<<<<< HEAD
 This project is licensed under the MIT License. 
+=======
+This project is licensed under the MIT License.
+>>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
