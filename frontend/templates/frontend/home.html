@@ -1,0 +1,82 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+{% block title %}Home - Photography Portfolio{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Our Photography Portfolio</h1>
+        <p>Capturing moments that last forever</p>
+        <a href="{% url 'gallery' %}" class="btn btn-primary btn-lg">View Gallery</a>
+    </div>
+</section>
+
+<!-- Featured Photos -->
+<section class="featured-photos">
+    <div class="container">
+        <h2 class="section-title">Featured Photos</h2>
+        <div class="row">
+            {% for photo in featured_photos %}
+            <div class="col-md-4 mb-4">
+                <div class="photo-card">
+                    <img src="{{ photo.image.url }}" alt="{{ photo.title }}" class="img-fluid">
+                    <div class="photo-info">
+                        <h3>{{ photo.title }}</h3>
+                        <p>{{ photo.description|truncatewords:20 }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="categories">
+    <div class="container">
+        <h2 class="section-title">Photo Categories</h2>
+        <div class="row">
+            {% for category in categories %}
+            <div class="col-md-3 mb-4">
+                <div class="category-card">
+                    <a href="{% url 'gallery' %}?category={{ category.slug }}">
+                        <div class="category-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>{{ category.name }}</h3>
+                        <p>{{ category.description|truncatewords:10 }}</p>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- About Preview -->
+<section class="about-preview">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="{% static 'frontend/img/about-preview.jpg' %}" alt="About Us" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <h2>About Our Photography</h2>
+                <p>We are passionate about capturing life's most precious moments through our lens. Our goal is to create timeless memories that you can cherish forever.</p>
+                <a href="{% url 'about' %}" class="btn btn-outline-primary">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="contact-cta">
+    <div class="container text-center">
+        <h2>Ready to Work Together?</h2>
+        <p>Let's create something beautiful together</p>
+        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Get in Touch</a>
+    </div>
+</section>
+{% endblock %} 
