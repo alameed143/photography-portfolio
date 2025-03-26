@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView
+from rest_framework import generics
 from photos.models import Photo, Category
+from .serializers import PhotoSerializer, CategorySerializer, ContactSerializer
 
 # Create your views here.
 
@@ -36,3 +38,23 @@ class AboutView(TemplateView):
 
 class ContactView(TemplateView):
     template_name = 'frontend/contact.html'
+
+# API views
+class PhotoListCreateView(generics.ListCreateAPIView):
+    queryset = Photo.objects.all()
+    serializer_class = PhotoSerializer
+
+class PhotoDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Photo.objects.all()
+    serializer_class = PhotoSerializer
+
+class CategoryListCreateView(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class ContactCreateView(generics.CreateAPIView):
+    serializer_class = ContactSerializer

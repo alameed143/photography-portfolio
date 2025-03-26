@@ -3,10 +3,10 @@ from . import views
 
 urlpatterns = [
     # Frontend routes
-    path('', views.home, name='home'),
-    path('gallery/', views.gallery, name='gallery'),
-    path('about/', views.about, name='about'),
-    path('contact/', views.contact, name='contact'),
+    path('', views.HomeView.as_view(), name='home'),
+    path('gallery/', views.GalleryView.as_view(), name='gallery'),
+    path('about/', views.AboutView.as_view(), name='about'),
+    path('contact/', views.ContactView.as_view(), name='contact'),
     
     # API routes
     path('api/photos/', views.PhotoListCreateView.as_view(), name='photo-list-create'),
