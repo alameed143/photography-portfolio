@@ -1,14 +1,15 @@
 {% extends 'frontend/base.html' %}
+{% load static %}
 
 {% block title %}Home - Photography Portfolio{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
 <section class="hero-section">
-    <div class="container">
-        <h1 class="display-4 mb-4">Welcome to Our Photography Portfolio</h1>
-        <p class="lead mb-4">Capturing life's beautiful moments through the lens</p>
-        <a href="{% url 'gallery' %}" class="btn btn-primary btn-lg">View Gallery</a>
+    <img src="https://source.unsplash.com/random/1920x1080/?photography" alt="Hero Image" class="parallax-img">
+    <div class="content">
+        <h1 class="display-3 mb-4">Capturing Life's Beautiful Moments</h1>
+        <p class="lead mb-4">Professional photography services for all occasions</p>
+        <a href="{% url 'gallery' %}" class="btn btn-outline-light btn-lg">View Gallery</a>
     </div>
 </section>
 
@@ -20,7 +21,10 @@
             {% for photo in featured_photos %}
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.title }}">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                         data-src="{{ photo.image.url }}" 
+                         class="card-img-top lazy" 
+                         alt="{{ photo.title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ photo.title }}</h5>
                         <p class="card-text">{{ photo.description|truncatewords:20 }}</p>
@@ -78,7 +82,10 @@
                 <a href="{% url 'about' %}" class="btn btn-primary mt-3">Learn More</a>
             </div>
             <div class="col-md-6">
-                <img src="https://source.unsplash.com/random/600x400/?photographer" alt="About Us" class="img-fluid rounded shadow">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                     data-src="https://source.unsplash.com/random/600x400/?photographer" 
+                     alt="About Us" 
+                     class="img-fluid rounded shadow lazy">
             </div>
         </div>
     </div>

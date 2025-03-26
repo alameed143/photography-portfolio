@@ -8,6 +8,34 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        @font-face {
+            font-family: 'Another Typewriter';
+            src: url('{% static "fonts/atwriter.ttf" %}') format('truetype');
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
@@ -17,40 +45,129 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Another Typewriter', monospace;
             color: var(--text-color);
             line-height: 1.6;
         }
         
         .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            background-color: transparent;
+            transition: all 0.3s ease-in-out;
+            padding: 1.5rem 0;
+        }
+        
+        .navbar.scrolled {
             background-color: var(--primary-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .navbar-brand {
             color: white !important;
             font-weight: bold;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled .navbar-brand {
+            font-size: 1.3rem;
         }
         
         .nav-link {
-            color: rgba(255,255,255,0.8) !important;
-            transition: color 0.3s ease;
+            color: rgba(255,255,255,0.9) !important;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 1rem !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
         }
         
         .nav-link:hover {
             color: white !important;
         }
         
+        main {
+            padding-top: 80px;
+        }
+        
         .hero-section {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/random/1920x1080/?photography');
+            margin-top: -80px;
+            position: relative;
+            background-attachment: fixed;
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                rgba(44, 62, 80, 0.7),
+                rgba(52, 152, 219, 0.7),
+                rgba(231, 76, 60, 0.7)
+            );
+            animation: gradientAnimation 15s ease infinite;
+            background-size: 200% 200%;
+            z-index: 1;
+        }
+
+        .hero-section .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .parallax-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
         }
         
         .section-title {
@@ -97,30 +214,150 @@
         .social-links a:hover {
             color: var(--secondary-color);
         }
+        
+        /* Mobile Menu Animations */
+        .navbar-collapse {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 300px;
+                height: 100vh;
+                padding: 2rem;
+                background: var(--primary-color);
+                transform: translateX(100%);
+                z-index: 1031;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .navbar-collapse.show {
+                transform: translateX(0);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+            
+            .navbar-nav {
+                margin-top: 2rem;
+            }
+            
+            .nav-item {
+                opacity: 0;
+                transform: translateX(50px);
+                transition: all 0.3s ease;
+                transition-delay: calc(0.1s * var(--item-number));
+            }
+            
+            .navbar-collapse.show .nav-item {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            .navbar-toggler {
+                z-index: 1032;
+                position: relative;
+            }
+            
+            .navbar-toggler.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .navbar-toggler.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .navbar-toggler.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+            
+            /* Close button inside mobile menu */
+            .mobile-menu-close {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 0.5rem;
+                transition: transform 0.3s ease;
+            }
+            
+            .mobile-menu-close:hover {
+                transform: rotate(90deg);
+            }
+            
+            /* Mobile menu overlay */
+            .mobile-menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.5);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 1030;
+            }
+            
+            .mobile-menu-overlay.show {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
     </style>
     {% block extra_css %}{% endblock %}
 </head>
 <body>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+    
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Photo Portfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="{% url 'home' %}">Photography Portfolio</a>
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-collapse">
+                <button class="mobile-menu-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
+                    <li class="nav-item" style="--item-index: 0;">
                         <a class="nav-link" href="{% url 'home' %}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+                    <li class="nav-item dropdown" style="--item-index: 1;">
+                        <a class="nav-link" href="{% url 'gallery' %}" id="galleryDropdown">Gallery</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'gallery' %}?category=portrait">Portrait</a></li>
+                            <li><a class="dropdown-item" href="{% url 'gallery' %}?category=landscape">Landscape</a></li>
+                            <li><a class="dropdown-item" href="{% url 'gallery' %}?category=wedding">Wedding</a></li>
+                            <li><a class="dropdown-item" href="{% url 'gallery' %}?category=events">Events</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    <li class="nav-item dropdown" style="--item-index: 2;">
+                        <a class="nav-link" href="{% url 'about' %}" id="aboutDropdown">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'about' %}#team">Our Team</a></li>
+                            <li><a class="dropdown-item" href="{% url 'about' %}#story">Our Story</a></li>
+                            <li><a class="dropdown-item" href="{% url 'about' %}#equipment">Equipment</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    <li class="nav-item dropdown" style="--item-index: 3;">
+                        <a class="nav-link" href="{% url 'contact' %}" id="contactDropdown">Contact</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'contact' %}#booking">Book a Session</a></li>
+                            <li><a class="dropdown-item" href="{% url 'contact' %}#quote">Get a Quote</a></li>
+                            <li><a class="dropdown-item" href="{% url 'contact' %}#location">Our Location</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -169,5 +406,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     {% block extra_js %}{% endblock %}
     <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Parallax effect
+            window.addEventListener('scroll', function() {
+                const parallaxElements = document.querySelectorAll('.hero-section');
+                parallaxElements.forEach(element => {
+                    const scrolled = window.pageYOffset;
+                    const rate = scrolled * 0.5;
+                    element.style.backgroundPosition = `center ${rate}px`;
+                });
+            });
+        });
+    </script>
 </body>
 </html> 
