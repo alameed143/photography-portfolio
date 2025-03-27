@@ -1,145 +1,102 @@
-# Photography Portfolio Website
-# موقع محفظة التصوير الفوتوغرافي
-<<<<<<< HEAD
-# फोटोग्राफी पोर्टफोलियो वेबसाइट
+# Photography Portfolio
 
-## Features / المميزات / विशेषताएं
-- Responsive Design / تصميم متجاوب / रेस्पॉन्सिव डिज़ाइन
-- Photo Gallery / معرض الصور / फोटो गैलरी
-- Category Filtering / تصفية الفئات / श्रेणी फ़िल्टरिंग
-- Contact Form / نموذج الاتصال / संपर्क फॉर्म
-- Admin Panel / لوحة التحكم / एडमिन पैनल
-- REST API / واجهة برمجة التطبيقات / REST API
+A modern, responsive photography portfolio website built with Django and modern web technologies.
 
-## Setup Instructions / تعليمات الإعداد / सेटअप निर्देश
+## Features
 
-### Requirements / المتطلبات / आवश्यकताएं
-=======
+- **Dynamic Gallery**: Showcase your photography work with a beautiful, responsive gallery
+- **Admin Dashboard**: Easy-to-use admin interface for managing your portfolio content
+- **Site Settings**: Customize your site's appearance through the admin panel
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Modern UI**: Clean and professional design with smooth animations
+- **Contact Form**: Built-in contact form for client inquiries
 
-## Features / المميزات 
-- Responsive Design 
-- Photo Gallery / معرض الصور 
-- Category Filtering / تصفية الفئات 
-- Contact Form / نموذج الاتصال 
-- Admin Panel / لوحة التحكم 
-- REST API / واجهة برمجة التطبيقات / REST API
+## Technology Stack
 
-## Setup Instructions / تعليمات الإعداد 
+- **Backend**: Django 4.2
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Database**: SQLite (default)
+- **Additional Libraries**:
+  - Django Rest Framework
+  - WhiteNoise for static files
+  - CORS headers
+  - Django Filters
 
-### Requirements / المتطلبات 
->>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
-- Python 3.8 or higher
-- Django 4.2
-- Django REST framework
-- Pillow
-- django-cors-headers
-- python-dotenv
+## Installation
 
-<<<<<<< HEAD
-### Installation / التثبيت / इंस्टॉलेशन
-1. Clone the repository / استنساخ المستودع / रिपॉजिटरी क्लोन करें:
-=======
-### Installation / التثبيت 
-1. Clone the repository / استنساخ المستودع 
->>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
-```bash
-git clone https://github.com/alameed143/photography-portfolio.git
-cd photography-portfolio
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/alameed143/photography-portfolio.git
+   cd photography_portfolio_backend
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Apply migrations:
+   ```bash
+   python manage.py migrate
+   ```
+
+5. Create a superuser:
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+6. Run the development server:
+   ```bash
+   python manage.py runserver
+   ```
+
+## Project Structure
+
+```
+photography_portfolio_backend/
+├── frontend/                 # Main application
+│   ├── static/              # Static files (CSS, JS, images)
+│   ├── templates/           # HTML templates
+│   ├── models.py            # Database models
+│   └── views.py             # View logic
+├── photos/                  # Photo management app
+├── manage.py               # Django management script
+└── requirements.txt        # Project dependencies
 ```
 
-<<<<<<< HEAD
-2. Create virtual environment / إنشاء بيئة افتراضية / वर्चुअल एनवायरनमेंट बनाएं:
-=======
-2. Create virtual environment / إنشاء بيئة افتراضية 
->>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
-```bash
-python -m venv venv
-```
+## Usage
 
-<<<<<<< HEAD
-3. Activate virtual environment / تفعيل البيئة الافتراضية / वर्चुअल एनवायरनमेंट सक्रिय करें:
-=======
-3. Activate virtual environment / تفعيل البيئة الافتراضية 
->>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
-```bash
-# Windows
-venv\Scripts\activate
+1. Access the admin panel at `http://127.0.0.1:8000/admin/`
+2. Log in with your superuser credentials
+3. Add your photos and content through the admin interface
+4. Customize site settings as needed
 
-# Linux/Mac
-source venv/bin/activate
-```
+## Navigation
 
-4. Install dependencies / تثبيت التبعيات / डिपेंडेंसी इंस्टॉल करें:
-```bash
-pip install -r requirements.txt
-```
+- **Home**: Landing page with hero section
+- **About**: Information about the photographer
+- **Gallery**: Photo portfolio showcase
+- **Contact**: Contact form for inquiries
 
-5. Run migrations / تشغيل الترحيلات / माइग्रेशन चलाएं:
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
+## Contributing
 
-6. Create superuser / إنشاء مستخدم رئيسي / सुपरयूजर बनाएं:
-```bash
-python manage.py createsuperuser
-```
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-7. Run the server / تشغيل الخادم / सर्वर चलाएं:
-```bash
-python manage.py runserver
-```
+## License
 
-<<<<<<< HEAD
-### Access Points / نقاط الوصول / एक्सेस पॉइंट्स
-=======
-### Access Points / نقاط الوصول 
->>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
-- Website: http://localhost:8000/
-- Admin Panel: http://localhost:8000/admin/
-- API Endpoints:
-  - Photos: http://localhost:8000/api/photos/
-  - Categories: http://localhost:8000/api/categories/
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-<<<<<<< HEAD
-## Project Structure / هيكل المشروع / प्रोजेक्ट संरचना
-=======
-## Project Structure / هيكل المشروع 
->>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
-```
-photography-portfolio/
-├── frontend/
-│   ├── static/
-│   │   └── frontend/
-│   │       ├── css/
-│   │       └── js/
-│   └── templates/
-│       └── frontend/
-├── photos/
-│   ├── migrations/
-│   ├── models.py
-│   └── views.py
-├── portfolio_backend/
-│   ├── settings.py
-│   └── urls.py
-├── manage.py
-├── requirements.txt
-└── .env
-```
+## Contact
 
-<<<<<<< HEAD
-## Contributing / المساهمة / योगदान
-=======
-## Contributing / المساهمة 
->>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
-Feel free to contribute to this project by:
-- Creating issues
-- Submitting pull requests
-- Improving documentation
-
-## License / الترخيص / लाइसेंस
-<<<<<<< HEAD
-This project is licensed under the MIT License. 
-=======
-This project is licensed under the MIT License.
->>>>>>> e7f8f0b8a0431a66fb806727cdf2e5a06c15f251
+Your Name - [Your Email]
+Project Link: https://github.com/alameed143/photography-portfolio
