@@ -3,36 +3,30 @@
 {% block title %}Gallery - Photography Portfolio{% endblock %}
 
 {% block content %}
-<section class="py-5">
+<section class="gallery-section py-5">
     <div class="container">
-        <h1 class="section-title text-center mb-5">Our Photo Gallery</h1>
+        <h2 class="section-title text-center">Our Gallery</h2>
         
-        <!-- Category Filter -->
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="d-flex justify-content-center flex-wrap gap-3">
-                    <a href="{% url 'gallery' %}" class="btn btn-outline-primary {% if not request.GET.category %}active{% endif %}">All</a>
-                    {% for category in categories %}
-                    <a href="{% url 'gallery' %}?category={{ category.slug }}" 
-                       class="btn btn-outline-primary {% if request.GET.category == category.slug %}active{% endif %}">
-                        {{ category.name }}
-                    </a>
-                    {% endfor %}
-                </div>
+        <!-- Category Filters -->
+        <div class="category-filters text-center mb-5">
+            <div class="btn-group" role="group" aria-label="Gallery categories">
+                <a href="{% url 'gallery' %}" class="btn btn-outline-primary {% if not category %}active{% endif %}">All</a>
+                <a href="{% url 'gallery' %}?category=portrait" class="btn btn-outline-primary {% if category == 'portrait' %}active{% endif %}">Portrait</a>
+                <a href="{% url 'gallery' %}?category=landscape" class="btn btn-outline-primary {% if category == 'landscape' %}active{% endif %}">Landscape</a>
+                <a href="{% url 'gallery' %}?category=wedding" class="btn btn-outline-primary {% if category == 'wedding' %}active{% endif %}">Wedding</a>
+                <a href="{% url 'gallery' %}?category=events" class="btn btn-outline-primary {% if category == 'events' %}active{% endif %}">Events</a>
             </div>
         </div>
 
-        <!-- Photo Grid -->
+        <!-- Gallery Grid -->
         <div class="row g-4">
             {% for photo in photos %}
             <div class="col-md-4">
-                <div class="card h-100">
+                <div class="card">
                     <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ photo.title }}</h5>
-                        <p class="card-text">{{ photo.description|truncatewords:20 }}</p>
-                        <p class="card-text"><small class="text-muted">Category: {{ photo.category.name }}</small></p>
-                        <a href="#" class="btn btn-outline-primary">View Details</a>
+                        <p class="card-text">{{ photo.description }}</p>
                     </div>
                 </div>
             </div>

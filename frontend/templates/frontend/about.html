@@ -1,101 +1,96 @@
 {% extends 'frontend/base.html' %}
+{% load static %}
 
 
 {% block title %}About Us - Photography Portfolio{% endblock %}
 
 
 {% block content %}
-<section class="py-5">
+<section class="about-section py-5">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h1 class="section-title">About Us</h1>
-                <p class="lead">We are passionate photographers dedicated to capturing the essence of life's most precious moments.</p>
-                <p>With years of experience and a keen eye for detail, we specialize in various photography styles including:</p>
-                <ul class="list-unstyled">
-                    <li><i class="fas fa-check text-primary me-2"></i>Portrait Photography</li>
-                    <li><i class="fas fa-check text-primary me-2"></i>Landscape Photography</li>
-                    <li><i class="fas fa-check text-primary me-2"></i>Event Photography</li>
-                    <li><i class="fas fa-check text-primary me-2"></i>Commercial Photography</li>
-                </ul>
-                <p>Our team of professional photographers brings creativity, technical expertise, and a passion for storytelling to every project. We believe that every photo should tell a story and evoke emotions.</p>
-                <div class="mt-4">
-                    <h4>Our Mission</h4>
-                    <p>To capture and preserve life's beautiful moments through the lens, creating timeless memories that will be cherished for generations to come.</p>
+        <h2 class="section-title text-center">About Us</h2>
+        
+        <!-- Our Story Section -->
+        <section id="story" class="mb-5">
+            <h3 class="text-center mb-4">Our Story</h3>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p>Welcome to our world of photography where every moment tells a story. We specialize in capturing the beauty, emotion, and essence of life's most precious moments.</p>
+                    <p>Our journey began with a simple passion for photography and has evolved into a professional service that helps people preserve their most cherished memories.</p>
                 </div>
-                <div class="mt-4">
-                    <h4>Our Vision</h4>
-                    <p>To be the leading photography studio known for our artistic excellence, professional service, and commitment to client satisfaction.</p>
+                <div class="col-md-6">
+                    <img src="{% static 'images/about-story.jpg' %}" alt="Our Story" class="img-fluid rounded shadow">
                 </div>
             </div>
-            <div class="col-md-6">
-                <img src="https://source.unsplash.com/random/600x400/?photographer" alt="About Us" class="img-fluid rounded shadow">
-                <div class="row mt-4">
-                    <div class="col-6">
-                        <div class="text-center">
-                            <h3 class="text-primary">500+</h3>
-                            <p>Happy Clients</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="text-center">
-                            <h3 class="text-primary">1000+</h3>
-                            <p>Photos Captured</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<section class="py-5 bg-light">
-    <div class="container">
-        <h2 class="section-title text-center mb-5">Our Team</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <img src="https://source.unsplash.com/random/300x300/?portrait" class="card-img-top" alt="Team Member">
-                    <div class="card-body">
-                        <h5 class="card-title">John Doe</h5>
-                        <p class="card-text">Lead Photographer</p>
-                        <div class="social-links">
-                            <a href="#" class="text-primary"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="text-primary"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-primary"><i class="fab fa-linkedin"></i></a>
+        <!-- Our Team Section -->
+        <section id="team" class="mb-5">
+            <h3 class="text-center mb-4">Our Team</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <img src="{% static 'images/team1.jpg' %}" class="card-img-top" alt="Team Member 1">
+                        <div class="card-body">
+                            <h5 class="card-title">John Doe</h5>
+                            <p class="card-text">Lead Photographer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <img src="{% static 'images/team2.jpg' %}" class="card-img-top" alt="Team Member 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Jane Smith</h5>
+                            <p class="card-text">Creative Director</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <img src="{% static 'images/team3.jpg' %}" class="card-img-top" alt="Team Member 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Mike Johnson</h5>
+                            <p class="card-text">Photo Editor</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <img src="https://source.unsplash.com/random/300x300/?woman" class="card-img-top" alt="Team Member">
-                    <div class="card-body">
-                        <h5 class="card-title">Jane Smith</h5>
-                        <p class="card-text">Event Specialist</p>
-                        <div class="social-links">
-                            <a href="#" class="text-primary"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="text-primary"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-primary"><i class="fab fa-linkedin"></i></a>
+        </section>
+
+        <!-- Equipment Section -->
+        <section id="equipment" class="mb-5">
+            <h3 class="text-center mb-4">Our Equipment</h3>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-camera fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Professional Cameras</h5>
+                            <p class="card-text">State-of-the-art DSLR and mirrorless cameras for the highest quality images.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-video fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Video Equipment</h5>
+                            <p class="card-text">High-quality video equipment for capturing moving moments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-lightbulb fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Lighting Setup</h5>
+                            <p class="card-text">Professional lighting equipment for perfect illumination in any situation.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card text-center">
-                    <img src="https://source.unsplash.com/random/300x300/?man" class="card-img-top" alt="Team Member">
-                    <div class="card-body">
-                        <h5 class="card-title">Mike Johnson</h5>
-                        <p class="card-text">Studio Manager</p>
-                        <div class="social-links">
-                            <a href="#" class="text-primary"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="text-primary"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-primary"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
     </div>
 </section>
 {% endblock %} 

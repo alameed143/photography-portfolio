@@ -4,19 +4,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbarBrand = document.querySelector('.navbar-brand');
     const navLinks = document.querySelectorAll('.nav-link');
     
-    const handleScroll = () => {
+    function handleScroll() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    };
-    
-    // Initial check
-    handleScroll();
-    
-    // Add scroll event listener
+    }
+
     window.addEventListener('scroll', handleScroll);
+    // Check initial scroll position
+    handleScroll();
     
     // Add hover effect for nav links
     navLinks.forEach(link => {
@@ -31,6 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.style.color = 'rgba(255,255,255,0.9)';
             }
         });
+    });
+
+    // Mobile menu animation
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarNav = document.querySelector('#navbarNav');
+    
+    navbarToggler.addEventListener('click', function() {
+        this.classList.toggle('active');
     });
 });
 
