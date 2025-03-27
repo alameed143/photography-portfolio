@@ -1,11 +1,82 @@
 {% extends 'frontend/base.html' %}
+{% load static %}
 
 {% block title %}Gallery - Photography Portfolio{% endblock %}
+
+{% block extra_css %}
+<style>
+    .masonry-grid {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-auto-rows: 0;
+    }
+
+    .masonry-item {
+        break-inside: avoid;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .masonry-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .masonry-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .masonry-item-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.3s ease-in-out;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .masonry-item:hover .masonry-item-overlay {
+        opacity: 1;
+    }
+
+    .masonry-item-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        transform: translateY(20px);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .masonry-item-description {
+        font-size: 0.9rem;
+        transform: translateY(20px);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .masonry-item:hover .masonry-item-title,
+    .masonry-item:hover .masonry-item-description {
+        transform: translateY(0);
+    }
+</style>
+{% endblock %}
 
 {% block content %}
 <section class="gallery-section py-5">
     <div class="container">
-        <h2 class="section-title text-center">Our Gallery</h2>
+        <h2 class="section-title text-center mb-5">Our Gallery</h2>
         
         <!-- Category Filters -->
         <div class="category-filters text-center mb-5">
@@ -18,16 +89,14 @@
             </div>
         </div>
 
-        <!-- Gallery Grid -->
-        <div class="row g-4">
+        <!-- Masonry Gallery Grid -->
+        <div class="masonry-grid">
             {% for photo in photos %}
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="{{ photo.image.url }}" class="card-img-top" alt="{{ photo.title }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ photo.title }}</h5>
-                        <p class="card-text">{{ photo.description }}</p>
-                    </div>
+            <div class="masonry-item">
+                <img src="{{ photo.image.url }}" alt="{{ photo.title }}" loading="lazy">
+                <div class="masonry-item-overlay">
+                    <h3 class="masonry-item-title">{{ photo.title }}</h3>
+                    <p class="masonry-item-description">{{ photo.description }}</p>
                 </div>
             </div>
             {% empty %}
@@ -67,4 +136,37 @@
         {% endif %}
     </div>
 </section>
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Masonry layout
+    const grid = document.querySelector('.masonry-grid');
+    const items = document.querySelectorAll('.masonry-item');
+    
+    // Function to set row heights
+    function resizeGridItem(item) {
+        const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+        const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+        const contentHeight = item.querySelector('img').getBoundingClientRect().height;
+        const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
+        item.style.gridRowEnd = 'span ' + rowSpan;
+    }
+
+    // Apply to all items
+    function resizeAllGridItems() {
+        items.forEach(resizeGridItem);
+    }
+
+    // Initial resize
+    resizeAllGridItems();
+
+    // Resize on window resize
+    window.addEventListener('resize', resizeAllGridItems);
+
+    // Resize when images load
+    window.addEventListener('load', resizeAllGridItems);
+});
+</script>
+{% endblock %}
 {% endblock %} 

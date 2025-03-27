@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView
 from rest_framework import generics
-from photos.models import Photo, Category
+from photos.models import Photo, Category, Contact
 from .serializers import PhotoSerializer, CategorySerializer, ContactSerializer
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required

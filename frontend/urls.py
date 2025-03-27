@@ -3,8 +3,8 @@ from . import views
 
 urlpatterns = [
     # Frontend routes
-    path('', views.home, name='home'),
-    path('gallery/', views.gallery, name='gallery'),
+    path('', views.HomeView.as_view(), name='home'),
+    path('gallery/', views.GalleryView.as_view(), name='gallery'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     
